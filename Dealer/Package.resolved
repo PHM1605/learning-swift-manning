@@ -1,0 +1,24 @@
+{
+  "originHash" : "dec6da265dfba4112da9c1950efb55a7880940cc64bfdf11c866e1a2593609ff",
+  "pins" : [
+    {
+      "identity" : "example-package-deckofplayingcards",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/example-package-deckofplayingcards.git",
+      "state" : {
+        "revision" : "ac38a4bb15ba8d2070c981464f2439ded480787a",
+        "version" : "3.0.5"
+      }
+    },
+    {
+      "identity" : "example-package-playingcard",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/example-package-playingcard.git",
+      "state" : {
+        "revision" : "39ddabb01e8102ab548a8c6bb3eb20b15f3b4fbc",
+        "version" : "3.0.5"
+      }
+    }
+  ],
+  "version" : 3
+}
