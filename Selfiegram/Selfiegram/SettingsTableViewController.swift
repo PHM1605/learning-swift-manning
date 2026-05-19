@@ -9,6 +9,12 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
 
+    @IBOutlet weak var locationSwitch: UISwitch!
+    
+    @IBAction func locationSwitchToggled(_ sender: Any) {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

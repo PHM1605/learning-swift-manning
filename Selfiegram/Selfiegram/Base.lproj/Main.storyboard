@@ -30,7 +30,7 @@
         <!--Settings-->
         <scene sceneID="G2A-EN-TQA">
             <objects>
-                <tableViewController title="Settings" id="mnc-2d-0YD" sceneMemberID="viewController">
+                <tableViewController title="Settings" clearsSelectionOnViewWillAppear="NO" id="mnc-2d-0YD" customClass="SettingsTableViewController" customModule="Selfiegram" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="TdD-CJ-Nq2">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,6 +55,10 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YXL-nu-K8x">
                                                     <rect key="frame" x="312" y="12" width="61" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="locationSwitchToggled:" destination="FyB-uU-GFP" eventType="valueChanged" id="89O-5t-W6U"/>
+                                                        <action selector="locationSwitchToggled:" destination="mnc-2d-0YD" eventType="valueChanged" id="Hbr-uL-S9d"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -68,8 +72,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="gIM-qZ-Obs"/>
+                    <connections>
+                        <outlet property="locationSwitch" destination="YXL-nu-K8x" id="ucL-P1-Eko"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIK-5B-ELC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="FyB-uU-GFP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-677" y="664"/>
         </scene>
@@ -113,7 +121,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Selfies" id="rbk-5S-g3D">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="VqP-UL-sAP">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="VqP-UL-sAP">
                             <connections>
                                 <segue destination="mnc-2d-0YD" kind="show" id="Uuv-9u-LFt"/>
                             </connections>
