@@ -15,11 +15,15 @@ class SettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var locationSwitch: UISwitch!
     
+    @IBOutlet weak var reminderSwitch: UISwitch!
+    
     @IBAction func locationSwitchToggled(_ sender: Any) {
         // {saveLocation: true/false}
         UserDefaults.standard.set(locationSwitch.isOn, forKey: SettingsKey.saveLocation.rawValue)
     }
     
+    @IBAction func reminderSwitchToggled(_ sender: Any) {
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
