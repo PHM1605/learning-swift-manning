@@ -7,15 +7,23 @@
 
 import UIKit
 
+enum SettingsKey: String {
+    case saveLocation
+}
+
 class SettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var locationSwitch: UISwitch!
     
     @IBAction func locationSwitchToggled(_ sender: Any) {
+        // {saveLocation: true/false}
+        UserDefaults.standard.set(locationSwitch.isOn, forKey: SettingsKey.saveLocation.rawValue)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // change appearance of switch accordingly
+        locationSwitch.isOn = UserDefaults.standard.bool(forKey: SettingsKey.saveLocation.rawValue)
     }
 }
