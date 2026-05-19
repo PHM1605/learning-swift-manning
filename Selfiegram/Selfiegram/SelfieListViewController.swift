@@ -153,7 +153,11 @@ class SelfieListViewController: UITableViewController {
     @objc func createNewSelfie() {
         // about location authorization
         lastLocation = nil // remove outdated location
-        requestCurrentLocation()
+        
+        let shouldGetLocation = UserDefaults.standard.bool(forKey: SettingsKey.saveLocation.rawValue)
+        if shouldGetLocation {
+            requestCurrentLocation()
+        }
         
         presentCamera()
     }
@@ -180,7 +184,8 @@ extension SelfieListViewController: UIImagePickerControllerDelegate, UINavigatio
             return
         }
         // if finish capturing image but <location> information hasn't arrived
-        if let _ = lastLocation {
+        let shouldGetLocation = UserDefaults.standard.bool(forKey: SettingsKey.saveLocation.rawValue)
+        if lastLocation != nil || !shouldGetLocation {
             // close image picker (NOTE: dismiss() is async)
             self.dismiss(animated: true) {
                 self.newSelfieTaken(image: image)
