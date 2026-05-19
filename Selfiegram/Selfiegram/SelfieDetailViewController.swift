@@ -14,6 +14,26 @@ class SelfieDetailViewController: UIViewController {
     @IBOutlet weak var selfieImageView: UIImageView!
     @IBOutlet weak var mapview: MKMapView!
     
+    @IBAction func sharedSelfie(_ sender: Any) {
+        guard let image = self.selfie?.image else {
+            // if load image failed
+            let alert = UIAlertController(
+                title: "Error",
+                message: "Unable to share selfie without an image",
+                preferredStyle: .alert
+            )
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        // share activity
+        let activity = UIActivityViewController(
+            activityItems: [image],
+            applicationActivities: nil)
+        self.present(activity, animated: true, completion: nil)
+    }
+    
     // closure; to show when the selfie is taken
     let dateFormatter = { () -> DateFormatter in
         let d = DateFormatter()

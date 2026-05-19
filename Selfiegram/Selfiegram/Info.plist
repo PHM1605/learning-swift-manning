@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Quicksand-Regular.otf</string>
+		<string>Quicksand-Bold.otf</string>
+		<string>Lobster_1.3.otf</string>
+	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We&apos;ll use your location to add location info to your selfies</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
