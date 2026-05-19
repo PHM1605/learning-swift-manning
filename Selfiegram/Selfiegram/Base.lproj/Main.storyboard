@@ -27,6 +27,52 @@
             </objects>
             <point key="canvasLocation" x="140" y="-35"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="G2A-EN-TQA">
+            <objects>
+                <tableViewController title="Settings" id="mnc-2d-0YD" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="TdD-CJ-Nq2">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="7QL-fz-mKb">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="XcF-eL-i1P">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="53"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XcF-eL-i1P" id="P3A-sx-LcW">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="53"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Store Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcA-kU-e1M">
+                                                    <rect key="frame" x="20" y="16" width="111" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YXL-nu-K8x">
+                                                    <rect key="frame" x="312" y="12" width="61" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </switch>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="mnc-2d-0YD" id="mCd-OA-HzN"/>
+                            <outlet property="delegate" destination="mnc-2d-0YD" id="rYO-E5-wq2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="gIM-qZ-Obs"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IIK-5B-ELC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-677" y="664"/>
+        </scene>
         <!--Selfies List-->
         <scene sceneID="Mpg-XA-2Dp">
             <objects>
@@ -66,7 +112,13 @@
                             <outlet property="delegate" destination="w2v-tg-FWi" id="jOk-iq-saJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Selfies" id="rbk-5S-g3D"/>
+                    <navigationItem key="navigationItem" title="Selfies" id="rbk-5S-g3D">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="VqP-UL-sAP">
+                            <connections>
+                                <segue destination="mnc-2d-0YD" kind="show" id="Uuv-9u-LFt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZU-zr-WgS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
