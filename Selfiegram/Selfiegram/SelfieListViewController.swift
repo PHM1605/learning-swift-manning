@@ -67,23 +67,57 @@ class SelfieListViewController: UITableViewController {
         return true
     }
     
-    // choose which style we are allowed to edit
-    override func tableView(
-        _ tableView: UITableView,
-        commit editingStyle: UITableViewCell.EditingStyle,
-        forRowAt indexPath: IndexPath
-    ) {
-        if editingStyle == .delete {
-            let selfieToRemove = selfies[indexPath.row]
+//    // choose which style we are allowed to edit => to delete
+//    override func tableView(
+//        _ tableView: UITableView,
+//        commit editingStyle: UITableViewCell.EditingStyle,
+//        forRowAt indexPath: IndexPath
+//    ) {
+//        if editingStyle == .delete {
+//            let selfieToRemove = selfies[indexPath.row]
+//            do {
+//                try SelfieStore.shared.delete(selfie: selfieToRemove)
+//                selfies.remove(at: indexPath.row)
+//                tableView.deleteRows(at: [indexPath], with: .fade)
+//            } catch {
+//                let title = selfieToRemove.title
+//                showError(message: "Failed to delete \(title)")
+//            }
+//        }
+//    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let share = UIContextualAction(style: .normal, title: "Share") {
+            (action, view, completion) in // closure to be called when user swipes to the left
+            let selfie = self.selfies[indexPath.row]
+            guard let image = selfie.image else {
+                self.showError(message: "Unable to share selfie without an image")
+                completion(false)
+                return
+            }
+            // share activity
+            let activity = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            self.present(activity, animated: true)
+            completion(true)
+        }
+        share.backgroundColor = self.view.tintColor
+        
+        let delete = UIContextualAction(style: .destructive, title: "Delete") {
+            (action, view, completion) in // closure to be called when user swipes to the left
+            let selfieToRemove = self.selfies[indexPath.row]
+            // attempt to delete the selfie
             do {
                 try SelfieStore.shared.delete(selfie: selfieToRemove)
-                selfies.remove(at: indexPath.row)
+                self.selfies.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                completion(true)
             } catch {
-                let title = selfieToRemove.title
-                showError(message: "Failed to delete \(title)")
+                self.showError(message: "Failed to delete \(selfieToRemove.title)")
+                completion(false)
             }
         }
+        
+        return UISwipeActionsConfiguration(actions: [share, delete])
     }
     
     // pop another ViewController when user taps a row
@@ -101,6 +135,8 @@ class SelfieListViewController: UITableViewController {
         // push next ViewController
         navigationController?.pushViewController(detailVC, animated: true)
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
