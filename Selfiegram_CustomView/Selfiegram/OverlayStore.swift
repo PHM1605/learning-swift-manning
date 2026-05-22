@@ -50,6 +50,8 @@ final class OverlayManager {
     static var cachedOverlayListURL: URL {
         return cacheDirectoryURL.appendingPathComponent("overlays.json", isDirectory: false)
     }
+    // for simultaneous downloads
+    private let loadingDispatchGroup = DispatchGroup()
     
     // function to find ONLINE image
     // "https://raw.githubusercontent.com/thesecretlab/learning-swift-3rd-ed/master/Data/eyebrow1-left.png"
@@ -116,12 +118,61 @@ final class OverlayManager {
         }.resume() // dataTask starts download
     }
     
-    // download OverlayImages
+    // download OverlayImages. If "refresh"=true, update list of Overlays first
     func loadOverlayAssets(
         refresh: Bool = false,
         completion: @escaping () -> Void
     ) {
-        
+        if (refresh) {
+            self.refreshOverlays(
+                // after refresh OverlayInformation, call itself again
+                completion: {
+                    (overlays, error) in
+                    self.loadOverlayAssets(refresh: false, completion: completion)
+                }
+            )
+            return
+        }
+        // Download OverlayImages from OverlayInfo
+        for info in overlayInfo {
+            let names = [info.icon, info.leftImage, info.rightImage]
+            // 1. where we download image from
+            // 2. where we put the image
+            typealias TaskURL = (source: URL, destination: URL)
+            let taskURLs: [TaskURL] = names.compactMap {
+                guard let sourceURL = URL(string: $0, relativeTo: OverlayManager.downloadURLBase) else { return nil }
+                guard let destinationURL = URL(string: $0, relativeTo: OverlayManager.cacheDirectoryURL) else {return nil}
+                // return TaskURL
+                return (source: sourceURL, destination: destinationURL)
+            }
+            // start downloading images
+            for taskURL in taskURLs {
+                loadingDispatchGroup.enter()
+                URLSession.shared.dataTask(
+                    with: taskURL.source,
+                    completionHandler: {
+                        (data, response, error) in
+                        // defer cleaning this task later - just to make sure we don't forget
+                        defer { self.loadingDispatchGroup.leave() }
+                        // now that we have some data from download
+                        guard let data = data else {
+                            NSLog("Failed tto download \(taskURL.source): \(error!)")
+                            return
+                        }
+                        // cache that downloaded data
+                        do {
+                            try data.write(to: taskURL.destination)
+                        } catch let error {
+                            NSLog("Failed to write to \(taskURL.destination): \(error)")
+                        }
+                    }
+                ).resume() // start downloading session
+            }
+        }
+        // Wait for all downloads to finish then run the completion block
+        loadingDispatchGroup.notify(queue: .main) {
+            completion()
+        }
     }
 }
 
