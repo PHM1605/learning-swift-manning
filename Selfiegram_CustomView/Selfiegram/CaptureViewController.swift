@@ -132,6 +132,35 @@ extension CaptureViewController: AVCapturePhotoCaptureDelegate {
             NSLog("Failed to get image from encoded data")
             return
         }
-        self.completion?(image) // if "self.completion" is "nil", do nothing
+//        self.completion?(image) // if "self.completion" is "nil", do nothing
+        
+        // NEW: after capturing photo we move to Edit screen
+        self.captureSession.stopRunning()
+        self.performSegue(withIdentifier: "showEditing", sender: image)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // get the EditingViewController
+        guard let destination = segue.destination as? EditingViewController else {
+            fatalError("The destination view controller is not configured correctly.")
+        }
+        // image to be sent to the next screen
+        guard let image = sender as? UIImage else {
+            fatalError("Expected to receive an image.")
+        }
+        // setup the EditingViewController
+        destination.image = image
+        destination.completion = self.completion 
+    }
+    
+    // purpose: when we move back from EditingViewController we start our camera again
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !self.captureSession.isRunning {
+            // .userInitiated: flagging "high level of importance"
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.captureSession.startRunning()
+            }
+        }
     }
 }

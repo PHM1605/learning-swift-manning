@@ -226,6 +226,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cameraPreview" destination="Smp-TE-Vcn" id="cAM-fE-IZg"/>
+                        <segue destination="3vb-Oa-Y1M" kind="show" identifier="showEditing" id="c2u-wB-qLR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQn-XM-1oq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -236,6 +237,44 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="217.55725190839695" y="1333.8028169014085"/>
+        </scene>
+        <!--Edit-->
+        <scene sceneID="fAD-Js-fGE">
+            <objects>
+                <viewController title="Edit" id="3vb-Oa-Y1M" customClass="EditingViewController" customModule="Selfiegram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B8E-AU-Bwv">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="09y-Fu-vRJ">
+                                <rect key="frame" x="16" y="172" width="361" height="612"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BIz-qd-puV">
+                                <rect key="frame" x="16" y="172" width="361" height="612"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="maJ-7u-3YP">
+                                        <rect key="frame" x="8" y="8" width="345" height="596"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </stackView>
+                                </subviews>
+                                <viewLayoutGuide key="contentLayoutGuide" id="B6A-FR-yl7"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="OpA-6I-mSR"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vNx-YH-6C0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ocA-06-db3"/>
+                    <connections>
+                        <outlet property="imageView" destination="09y-Fu-vRJ" id="xMt-Jd-zAe"/>
+                        <outlet property="optionsStackView" destination="maJ-7u-3YP" id="ppB-8N-Lde"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wIG-4R-bRU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1014.5038167938931" y="1333.8028169014085"/>
         </scene>
         <!--Selfie Detail-->
         <scene sceneID="tne-QT-ifu">
