@@ -63,9 +63,24 @@ class EditingViewController: UIViewController {
         })
     }
     // when user clicks "done"; return either original OR edited image
+    
+    // function to check image size before showing on screen (avoid memory crash)
+    func printImageMemory(_ image: UIImage?, name: String) {
+        // convert UIImage to "metal" image for low-level programming
+        guard let cg = image?.cgImage else {
+            print("\(name): nil")
+            return
+        }
+        let bytes = cg.bytesPerRow * cg.height
+        let mb = Double(bytes) / (1024*1024)
+        print("\(name): \(String(format: "%.2f", mb)) MB")
+    }
+    
     @objc func done() {
+        printImageMemory(self.image, name: "Original")
+        printImageMemory(self.renderedImage, name: "Rendered")
+
         let imageToReturn = self.renderedImage ?? self.image
-        // return to SelfieListViewController
         self.completion?(imageToReturn)
     }
     
@@ -75,7 +90,9 @@ class EditingViewController: UIViewController {
         guard let overlay = self.currentOverlay, let image = self.image else {
             return
         }
-        let renderer = UIGraphicsImageRenderer(size: image.size)
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1.0
+        let renderer = UIGraphicsImageRenderer(size: image.size, format: format)
         let renderedImage = renderer.image {
             context in
             // draw base image
