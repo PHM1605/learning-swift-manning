@@ -176,7 +176,11 @@ class SelfieListViewController: UITableViewController {
     
     // called when user select a photo
     func newSelfieTaken(image: UIImage) {
-        let newSelfie = Selfie(title: "New Selfie")
+//        // 1 language English support
+//        let newSelfie = Selfie(title: "New Selfie")
+        // support many languages
+        let selfieTitle = NSLocalizedString("New Selfie", comment: "default name for a newly-created selfie")
+        let newSelfie = Selfie(title: selfieTitle)
         newSelfie.image = image
         
         if let location = self.lastLocation {

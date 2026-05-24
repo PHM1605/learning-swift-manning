@@ -64,7 +64,12 @@ class SettingsTableViewController: UITableViewController {
         current.removeAllPendingNotificationRequests()
         // prepare content
         let content = UNMutableNotificationContent()
-        content.title = "Take a selfie!"
+//        // for English only
+//        content.title = "Take a selfie!"
+        content.title = NSString.localizedUserNotificationString(
+            forKey: "Take a selfie!",
+            arguments: nil
+        )
         // create Date component at "10AM"
         var components = DateComponents()
         components.setValue(13, for: Calendar.Component.hour)

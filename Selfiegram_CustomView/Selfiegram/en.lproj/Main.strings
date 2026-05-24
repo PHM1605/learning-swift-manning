@@ -1,0 +1,45 @@
+
+/* Class = "UIViewController"; title = "Edit"; ObjectID = "3vb-Oa-Y1M"; */
+"3vb-Oa-Y1M.title" = "Edit";
+
+/* Class = "UINavigationItem"; title = "Selfie"; ObjectID = "4EX-cI-9FN"; */
+"4EX-cI-9FN.title" = "Selfie";
+
+/* Class = "UILabel"; text = "Tap to take a selfie"; ObjectID = "4e6-eW-h9u"; */
+"4e6-eW-h9u.text" = "Tap to take a selfie";
+
+/* Class = "UINavigationItem"; title = "Selfie!"; ObjectID = "50c-9w-Fbj"; */
+"50c-9w-Fbj.title" = "Selfie!";
+
+/* Class = "UIViewController"; title = "Selfie Detail"; ObjectID = "BYZ-38-t0r"; */
+"BYZ-38-t0r.title" = "Selfie Detail";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "FPs-9N-74E"; */
+"FPs-9N-74E.text" = "Title";
+
+/* Class = "UILabel"; text = "Store Location"; ObjectID = "NcA-kU-e1M"; */
+"NcA-kU-e1M.text" = "Store Location";
+
+/* Class = "UITextField"; text = "Selfie Name"; ObjectID = "QLt-Bl-7N2"; */
+"QLt-Bl-7N2.text" = "Selfie Name";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "Sph-Wd-WQd"; */
+"Sph-Wd-WQd.text" = "Date";
+
+/* Class = "UIBarButtonItem"; title = "Settings"; ObjectID = "VqP-UL-sAP"; */
+"VqP-UL-sAP.title" = "Settings";
+
+/* Class = "UILabel"; text = "Remind me at 10am"; ObjectID = "g70-RQ-HzF"; */
+"g70-RQ-HzF.text" = "Remind me at 10am";
+
+/* Class = "UITableViewController"; title = "Settings"; ObjectID = "mnc-2d-0YD"; */
+"mnc-2d-0YD.title" = "Settings";
+
+/* Class = "UINavigationItem"; title = "Selfies"; ObjectID = "rbk-5S-g3D"; */
+"rbk-5S-g3D.title" = "Selfies";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "t9f-dR-yWl"; */
+"t9f-dR-yWl.text" = "Subtitle";
+
+/* Class = "UITableViewController"; title = "Selfies List"; ObjectID = "w2v-tg-FWi"; */
+"w2v-tg-FWi.title" = "Selfies List";
