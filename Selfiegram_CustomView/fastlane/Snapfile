@@ -1,0 +1,19 @@
+devices([
+  "iPhone 17 Pro"
+])
+
+languages([
+  "en-US"
+])
+
+scheme("Selfiegram")
+test_target_name("SelfiegramUITests")
+
+# ← Add this: points to your UI test target
+launch_arguments(["-UITests"])
+
+output_directory("./screenshots")
+
+clear_previous_screenshots(true)
+
+override_status_bar(true)

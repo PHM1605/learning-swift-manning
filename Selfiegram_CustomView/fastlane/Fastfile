@@ -1,0 +1,45 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  before_all do
+    # Any actions you want to run before all lanes are put here 
+  end 
+  
+  desc "Runs all the tests"
+  lane :test do
+    # Perform all of the tests in the project
+    scan
+  end
+  
+  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "This will also make sure the profile is up to date"
+  lane :beta do 
+    # Build the app 
+    gym 
+    # Submit the app to TestFlight 
+    pilot 
+  end 
+  
+  desc "Deploy a new version to the App Store"
+  lane :release do 
+    # Build the app 
+    gym 
+    # Submit the app to the App Store 
+    deliver(force: true)
+  end
+end

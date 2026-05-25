@@ -1,0 +1,6 @@
+app_identifier("xyz.mintek.Selfiegram") # The bundle identifier of your app
+apple_id("PHM1605@gmail.com") # Your Apple Developer Portal username
+
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
