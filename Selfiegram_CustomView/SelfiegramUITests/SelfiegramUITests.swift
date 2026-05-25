@@ -89,6 +89,7 @@ final class SelfiegramUITests: XCTestCase {
     @MainActor
     func testScreenshots() {
         let app = XCUIApplication()
+        app.launch()
         snapshot("MainApp")
         app.navigationBars["Selfies"].buttons["Settings"].tap()
         snapshot("Settings")
