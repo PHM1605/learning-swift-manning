@@ -266,7 +266,7 @@
                         <viewLayoutGuide key="safeArea" id="vNx-YH-6C0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ocA-06-db3"/>
+                    <navigationItem key="navigationItem" title="Edit" id="ocA-06-db3"/>
                     <connections>
                         <outlet property="imageView" destination="09y-Fu-vRJ" id="xMt-Jd-zAe"/>
                         <outlet property="optionsStackView" destination="maJ-7u-3YP" id="ppB-8N-Lde"/>
